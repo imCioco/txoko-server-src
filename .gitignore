@@ -1,0 +1,9 @@
+# Ignore archives
+*.tar
+*.tar.gz
+*.zip
+*.rar
+*.7z
+
+# Ignore entire extern folder
+extern/
