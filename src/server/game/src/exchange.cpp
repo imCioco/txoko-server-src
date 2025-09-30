@@ -16,7 +16,7 @@
 
 void exchange_packet(LPCHARACTER ch, BYTE sub_header, bool is_me, DWORD arg1, TItemPos arg2, DWORD arg3, void * pvData = NULL);
 
-// ▒│╚п ╞╨┼╢
+// я┐╜я┐╜╚п я┐╜я┐╜┼╢
 void exchange_packet(LPCHARACTER ch, BYTE sub_header, bool is_me, DWORD arg1, TItemPos arg2, DWORD arg3, void * pvData)
 {
 	if (!ch->GetDesc())
@@ -45,15 +45,15 @@ void exchange_packet(LPCHARACTER ch, BYTE sub_header, bool is_me, DWORD arg1, TI
 	ch->GetDesc()->Packet(&pack_exchg, sizeof(pack_exchg));
 }
 
-// ▒│╚п└╗ ╜├└█
+// я┐╜я┐╜╚пя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 bool CHARACTER::ExchangeStart(LPCHARACTER victim)
 {
-	if (this == victim)	// └┌▒т └┌╜┼░·┤┬ ▒│╚п└╗ ╕°╟╤┤┘.
+	if (this == victim)	// я┐╜┌▒я┐╜ я┐╜┌╜┼░я┐╜я┐╜я┐╜ я┐╜я┐╜╚пя┐╜я┐╜ я┐╜я┐╜я┐╜╤┤я┐╜.
 		return false;
 
 	if (IsObserverMode())
 	{
-		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("░№└№ ╗є┼┬┐б╝н┤┬ ▒│╚п└╗ ╟╥ ╝Ў ╛°╜└┤╧┤┘."));
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜┬┐я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜╚пя┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."));
 		return false;
 	}
 
@@ -63,19 +63,19 @@ bool CHARACTER::ExchangeStart(LPCHARACTER victim)
 	//PREVENT_TRADE_WINDOW
 	if ( IsOpenSafebox() || GetShopOwner() || GetMyShop() || IsCubeOpen())
 	{
-		ChatPacket( CHAT_TYPE_INFO, LC_TEXT("┤┘╕е ░┼╖б├в└╠ ┐н╖┴└╓└╗░ц┐ь ░┼╖б╕ж ╟╥╝Ў ╛°╜└┤╧┤┘." ) );
+		ChatPacket( CHAT_TYPE_INFO, LC_TEXT("я┐╜┘╕я┐╜ я┐╜┼╖я┐╜├вя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜┼╖я┐╜я┐╜я┐╜ я┐╜╥╝я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜." ) );
 		return false;
 	}
 
 	if ( victim->IsOpenSafebox() || victim->GetShopOwner() || victim->GetMyShop() || victim->IsCubeOpen() )
 	{
-		ChatPacket( CHAT_TYPE_INFO, LC_TEXT("╗є┤ы╣ц└╠ ┤┘╕е ░┼╖б┴▀└╠╢є ░┼╖б╕ж ╟╥╝Ў ╛°╜└┤╧┤┘." ) );
+		ChatPacket( CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜┘╕я┐╜ я┐╜┼╖я┐╜я┐╜я┐╜я┐╜╠╢я┐╜ я┐╜┼╖я┐╜я┐╜я┐╜ я┐╜╥╝я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜." ) );
 		return false;
 	}
 	//END_PREVENT_TRADE_WINDOW
 	int iDist = DISTANCE_APPROX(GetX() - victim->GetX(), GetY() - victim->GetY());
 
-	// ░┼╕о ├╝┼й
+	// я┐╜┼╕я┐╜ ├╝┼й
 	if (iDist >= EXCHANGE_MAX_DISTANCE)
 		return false;
 
@@ -90,7 +90,7 @@ bool CHARACTER::ExchangeStart(LPCHARACTER victim)
 
 	if (victim->IsBlockMode(BLOCK_EXCHANGE))
 	{
-		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("╗є┤ы╣ц└╠ ▒│╚п ░┼║╬ ╗є┼┬└╘┤╧┤┘."));
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜╚п я┐╜┼║я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╘┤╧┤я┐╜."));
 		return false;
 	}
 
@@ -143,7 +143,7 @@ bool CExchange::AddItem(TItemPos item_pos, BYTE display_pos)
 	if (!item_pos.IsValidItemPosition())
 		return false;
 
-	// └х║ё┤┬ ▒│╚п╟╥ ╝Ў ╛°└╜
+	// я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜╚пя┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 	if (item_pos.IsEquipPosition())
 		return false;
 
@@ -154,7 +154,7 @@ bool CExchange::AddItem(TItemPos item_pos, BYTE display_pos)
 
 	if (IS_SET(item->GetAntiFlag(), ITEM_ANTIFLAG_GIVE))
 	{
-		m_pOwner->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("╛╞└╠┼█└╗ ░╟│╫┴┘ ╝Ў ╛°╜└┤╧┤┘."));
+		m_pOwner->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜╟│я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."));
 		return false;
 	}
 
@@ -163,7 +163,7 @@ bool CExchange::AddItem(TItemPos item_pos, BYTE display_pos)
 		return false;
 	}
 
-	// └╠╣╠ ▒│╚п├в┐б ├▀░б╡╚ ╛╞└╠┼█└╬░б?
+	// я┐╜╠╣я┐╜ я┐╜я┐╜╚п├вя┐╜я┐╜ я┐╜▀░я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜╬░я┐╜?
 	if (item->IsExchanging())
 	{
 		sys_log(0, "EXCHANGE under exchanging");
@@ -191,7 +191,7 @@ bool CExchange::AddItem(TItemPos item_pos, BYTE display_pos)
 
 		item->SetExchanging(true);
 
-		exchange_packet(m_pOwner, 
+		exchange_packet(m_pOwner,
 				EXCHANGE_SUBHEADER_GC_ITEM_ADD,
 				true,
 				item->GetVnum(),
@@ -200,8 +200,8 @@ bool CExchange::AddItem(TItemPos item_pos, BYTE display_pos)
 				item);
 
 		exchange_packet(GetCompany()->GetOwner(),
-				EXCHANGE_SUBHEADER_GC_ITEM_ADD, 
-				false, 
+				EXCHANGE_SUBHEADER_GC_ITEM_ADD,
+				false,
 				item->GetVnum(),
 				TItemPos(RESERVED_WINDOW, display_pos),
 				item->GetCount(),
@@ -212,7 +212,7 @@ bool CExchange::AddItem(TItemPos item_pos, BYTE display_pos)
 		return true;
 	}
 
-	// ├▀░б╟╥ ░°░г└╠ ╛°└╜
+	// я┐╜▀░я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 	return false;
 }
 
@@ -248,7 +248,7 @@ bool CExchange::AddGold(long gold)
 
 	if (GetOwner()->GetGold() < gold)
 	{
-		// ░б┴Ў░э └╓┤┬ ╡╖└╠ ║╬┴╖.
+		// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜╓┤я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜.
 		exchange_packet(GetOwner(), EXCHANGE_SUBHEADER_GC_LESS_GOLD, 0, 0, NPOS, 0);
 		return false;
 	}
@@ -271,7 +271,7 @@ bool CExchange::AddGold(long gold)
 	return true;
 }
 
-// ╡╖└╠ ├ц║╨╚ў └╓┤┬┴Ў, ▒│╚п╟╧╖┴┤┬ ╛╞└╠┼█└╠ ╜╟┴ж╖╬ └╓┤┬┴Ў ╚о└╬ ╟╤┤┘.
+// я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜╓┤я┐╜я┐╜я┐╜, я┐╜я┐╜╚пя┐╜╧╖я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜╓┤я┐╜я┐╜я┐╜ ╚оя┐╜я┐╜ я┐╜╤┤я┐╜.
 bool CExchange::Check(int * piItemCount)
 {
 	if (GetOwner()->GetGold() < m_lGold)
@@ -299,42 +299,52 @@ bool CExchange::Check(int * piItemCount)
 
 bool CExchange::CheckSpace()
 {
-	static CGrid s_grid1(5, INVENTORY_MAX_NUM/5 / 2); // inven page 1
-	static CGrid s_grid2(5, INVENTORY_MAX_NUM/5 / 2); // inven page 2
+	static CGrid s_grid1(5, INVENTORY_MAX_NUM/5/4);
+	static CGrid s_grid2(5, INVENTORY_MAX_NUM/5/4);
+	static CGrid s_grid3(5, INVENTORY_MAX_NUM/5/4);
+	static CGrid s_grid4(5, INVENTORY_MAX_NUM/5/4);
 
 	s_grid1.Clear();
 	s_grid2.Clear();
+	s_grid3.Clear();
+	s_grid4.Clear();
 
 	LPCHARACTER	victim = GetCompany()->GetOwner();
 	LPITEM item;
 
 	int i;
 
-	for (i = 0; i < INVENTORY_MAX_NUM / 2; ++i)
-	{
+	const int perPageSlotCount = INVENTORY_MAX_NUM / 4;
+
+	for (i = 0; i < INVENTORY_MAX_NUM; ++i) {
 		if (!(item = victim->GetInventoryItem(i)))
 			continue;
 
-		s_grid1.Put(i, 1, item->GetSize());
-	}
-	for (i = INVENTORY_MAX_NUM / 2; i < INVENTORY_MAX_NUM; ++i)
-	{
-		if (!(item = victim->GetInventoryItem(i)))
-			continue;
+		BYTE itemSize = item->GetSize();
 
-		s_grid2.Put(i - INVENTORY_MAX_NUM / 2, 1, item->GetSize());
+		if (i < perPageSlotCount) // adjusted for 4 inventory pages
+			s_grid1.Put(i, 1, itemSize);
+		else if (i < perPageSlotCount * 2)
+			s_grid2.Put(i - perPageSlotCount, 1, itemSize);
+		else if (i < perPageSlotCount * 3)
+			s_grid3.Put(i - perPageSlotCount * 2, 1, itemSize);
+		else
+			s_grid4.Put(i - perPageSlotCount * 3, 1, itemSize);
 	}
+	//-----------------------------------------------------------
 
-	// ╛╞... ╣║░б ░│║┤╜┼ ░░┴Ў╕╕... ┐ы╚е╝о └╬║е└╗ │ы╕╓ └╬║е ║╕░э ╡√╢є ╕╕╡ч │╗ └▀╕°└╠┤┘ д╨д╨
+	// ─╛─Ж... ─Е┼Я┬░╦З ┬░┼В┼Я┬┤╦Э─╣ ┬░┬░├Б├╢┬╕┬╕... ┼╝├л─М─Д─╜┬о ┼Ф├О┼Я─Д┼Ф┬╗ ┼В├л┬╕├Ц ┼Ф├О┼Я─Д ┼Я┬╕┬░├н ┬╡┼▒┬╢├│ ┬╕┬╕┬╡├з ┼В┬╗ ┼Ф├Я┬╕┼Щ┼Ф─Ъ┬┤┼о ┬д─Р┬д─Р
 	static std::vector <WORD> s_vDSGrid(DRAGON_SOUL_INVENTORY_MAX_NUM);
-	
-	// └╧┤▄ ┐ы╚е╝о└╗ ▒│╚п╟╧┴Ў ╛╩└╗ ░б┤╔╝║└╠ ┼й╣╟╖╬, ┐ы╚е╝о └╬║е ║╣╗ч┤┬ ┐ы╚е╝о└╠ └╓└╗ ╢з ╟╧╡╡╖╧ ╟╤┤┘.
+
+	// ┼Ф─О┬┤├Ь ┼╝├л─М─Д─╜┬о┼Ф┬╗ ┬▒┼В─М┼╗├З─О├Б├╢ ─╛─Ш┼Ф┬╗ ┬░╦З┬┤├Й─╜┼Я┼Ф─Ъ ─╣┬й─Е├З┬╖├О, ┼╝├л─М─Д─╜┬о ┼Ф├О┼Я─Д ┼Я─Е┬╗├з┬┤├В ┼╝├л─М─Д─╜┬о┼Ф─Ъ ┼Ф├Ц┼Ф┬╗ ┬╢┬з ├З─О┬╡┬╡┬╖─О ├З┼Г┬┤┼о.
 	bool bDSInitialized = false;
-	
+
 	for (i = 0; i < EXCHANGE_ITEM_MAX_NUM; ++i)
 	{
 		if (!(item = m_apItems[i]))
 			continue;
+
+		BYTE itemSize = item->GetSize();
 
 		if (item->IsDragonSoul())
 		{
@@ -353,12 +363,11 @@ bool CExchange::CheckSpace()
 			WORD wBasePos = DSManager::instance().GetBasePosition(item);
 			if (wBasePos >= DRAGON_SOUL_INVENTORY_MAX_NUM)
 				return false;
-			
+
 			for (int i = 0; i < DRAGON_SOUL_BOX_SIZE; i++)
 			{
 				WORD wPos = wBasePos + i;
-				// if (0 == s_vDSGrid[wBasePos])
-				if (0 == s_vDSGrid[wPos]) // Fix
+				if (0 == s_vDSGrid[wPos])
 				{
 					bool bEmpty = true;
 					for (int j = 1; j < item->GetSize(); j++)
@@ -373,7 +382,7 @@ bool CExchange::CheckSpace()
 					{
 						for (int j = 0; j < item->GetSize(); j++)
 						{
-							s_vDSGrid[wPos + j * DRAGON_SOUL_BOX_COLUMN_NUM] =  wPos + 1;
+							s_vDSGrid[wPos + j * DRAGON_SOUL_BOX_COLUMN_NUM] = wPos + 1;
 						}
 						bExistEmptySpace = true;
 						break;
@@ -387,32 +396,39 @@ bool CExchange::CheckSpace()
 		}
 		else
 		{
-			int iPos = s_grid1.FindBlank(1, item->GetSize());
-
-			if (iPos >= 0)
-			{
-				s_grid1.Put(iPos, 1, item->GetSize());
+			int iPos = s_grid1.FindBlank(1, itemSize);
+			if (iPos >= 0) {
+				s_grid1.Put(iPos, 1, itemSize);
+				continue;
 			}
-			else
-			{
-				iPos = s_grid2.FindBlank(1, item->GetSize());
 
-				if (iPos >= 0)
-				{
-					s_grid2.Put(iPos, 1, item->GetSize());
-				}
-				else
-				{
-					return false;
-				}
+			iPos = s_grid2.FindBlank(1, itemSize);
+			if (iPos >= 0) {
+				s_grid2.Put(iPos, 1, itemSize);
+				continue;
 			}
+
+			iPos = s_grid3.FindBlank(1, itemSize);
+			if (iPos >= 0) {
+				s_grid3.Put(iPos, 1, itemSize);
+				continue;
+			}
+
+			iPos = s_grid4.FindBlank(1, itemSize);
+			if (iPos >= 0) {
+				s_grid4.Put(iPos, 1, itemSize);
+				continue;
+			}
+
+			return false;  // No space left in inventory
+
 		}
 	}
 
 	return true;
 }
 
-// ▒│╚п │б (╛╞└╠┼█░· ╡╖ ╡ю└╗ ╜╟┴ж╖╬ ┐┼▒ф┤┘)
+// я┐╜я┐╜╚п я┐╜я┐╜ (я┐╜я┐╜я┐╜я┐╜я┐╜█░я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜┼▒я┐╜я┐╜)
 bool CExchange::Done()
 {
 	int		empty_pos, i;
@@ -432,7 +448,7 @@ bool CExchange::Done()
 
 		if (empty_pos < 0)
 		{
-			sys_err("Exchange::Done : Cannot find blank position in inventory %s <-> %s item %s", 
+			sys_err("Exchange::Done : Cannot find blank position in inventory %s <-> %s item %s",
 					m_pOwner->GetName(), victim->GetName(), item->GetName());
 			continue;
 		}
@@ -494,7 +510,7 @@ bool CExchange::Done()
 	return true;
 }
 
-// ▒│╚п└╗ ╡┐└╟
+// я┐╜я┐╜╚пя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 bool CExchange::Accept(bool bAccept)
 {
 	if (m_bAccept == bAccept)
@@ -502,7 +518,7 @@ bool CExchange::Accept(bool bAccept)
 
 	m_bAccept = bAccept;
 
-	// ╡╤ ┤┘ ╡┐└╟ ╟▀└╕╣╟╖╬ ▒│╚п ╝║╕│
+	// я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╟╖я┐╜ я┐╜я┐╜╚п я┐╜я┐╜я┐╜я┐╜
 	if (m_bAccept && GetCompany()->m_bAccept)
 	{
 		int	iItemCount;
@@ -511,39 +527,39 @@ bool CExchange::Accept(bool bAccept)
 
 		//PREVENT_PORTAL_AFTER_EXCHANGE
 		GetOwner()->SetExchangeTime();
-		victim->SetExchangeTime();		
+		victim->SetExchangeTime();
 		//END_PREVENT_PORTAL_AFTER_EXCHANGE
 
-		// exchange_check ┐б╝н┤┬ ▒│╚п╟╥ ╛╞└╠┼█╡щ└╠ ┴ж└┌╕о┐б └╓│к ╚о└╬╟╧░э,
-		// ┐д┼й╡╡ ├ц║╨╚ў └╓│к ╚о└╬╟╤┤┘, ╡╬╣°┬░ └╬└┌╖╬ ▒│╚п╟╥ ╛╞└╠┼█ ░│╝Ў
-		// ╕ж ╕о┼╧╟╤┤┘.
+		// exchange_check я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜╚пя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜█╡я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜┌╕я┐╜я┐╜я┐╜ я┐╜╓│я┐╜ ╚оя┐╜я┐╜я┐╜╧░я┐╜,
+		// я┐╜я┐╜┼йя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜╓│я┐╜ ╚оя┐╜я┐╜я┐╜╤┤я┐╜, я┐╜╬╣я┐╜┬░ я┐╜я┐╜я┐╜┌╖я┐╜ я┐╜я┐╜╚пя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
+		// я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╤┤я┐╜.
 		if (!Check(&iItemCount))
 		{
-			GetOwner()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("╡╖└╠ ║╬┴╖╟╧░┼│к ╛╞└╠┼█└╠ ┴ж└┌╕о┐б ╛°╜└┤╧┤┘."));
-			victim->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("╗є┤ы╣ц└╟ ╡╖└╠ ║╬┴╖╟╧░┼│к ╛╞└╠┼█└╠ ┴ж└┌╕о┐б ╛°╜└┤╧┤┘."));
+			GetOwner()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧░┼│я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜┌╕я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."));
+			victim->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧░┼│я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜┌╕я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."));
 			goto EXCHANGE_END;
 		}
 
-		// ╕о┼╧ ╣▐└║ ╛╞└╠┼█ ░│╝Ў╖╬ ╗є┤ы╣ц└╟ ╝╥┴Ў╟░┐б │▓└║ └┌╕о░б └╓│к ╚о└╬╟╤┤┘.
+		// я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜╟░я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜┌╕я┐╜я┐╜я┐╜ я┐╜╓│я┐╜ ╚оя┐╜я┐╜я┐╜╤┤я┐╜.
 		if (!CheckSpace())
 		{
-			GetOwner()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("╗є┤ы╣ц└╟ ╝╥┴Ў╟░┐б ║є ░°░г└╠ ╛°╜└┤╧┤┘."));
-			victim->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("╝╥┴Ў╟░┐б ║є ░°░г└╠ ╛°╜└┤╧┤┘."));
+			GetOwner()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜╟░я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."));
+			victim->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜╟░я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."));
 			goto EXCHANGE_END;
 		}
 
-		// ╗є┤ы╣ц╡╡ ╕╢┬∙░б┴Ў╖╬..
+		// я┐╜я┐╜я┐╜ц╡╡ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜..
 		if (!GetCompany()->Check(&iItemCount))
 		{
-			victim->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("╡╖└╠ ║╬┴╖╟╧░┼│к ╛╞└╠┼█└╠ ┴ж└┌╕о┐б ╛°╜└┤╧┤┘."));
-			GetOwner()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("╗є┤ы╣ц└╟ ╡╖└╠ ║╬┴╖╟╧░┼│к ╛╞└╠┼█└╠ ┴ж└┌╕о┐б ╛°╜└┤╧┤┘."));
+			victim->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧░┼│я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜┌╕я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."));
+			GetOwner()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧░┼│я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜┌╕я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."));
 			goto EXCHANGE_END;
 		}
 
 		if (!GetCompany()->CheckSpace())
 		{
-			victim->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("╗є┤ы╣ц└╟ ╝╥┴Ў╟░┐б ║є ░°░г└╠ ╛°╜└┤╧┤┘."));
-			GetOwner()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("╝╥┴Ў╟░┐б ║є ░°░г└╠ ╛°╜└┤╧┤┘."));
+			victim->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜╟░я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."));
+			GetOwner()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("я┐╜я┐╜я┐╜я┐╜╟░я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."));
 			goto EXCHANGE_END;
 		}
 
@@ -557,17 +573,17 @@ bool CExchange::Accept(bool bAccept)
 
 		if (Done())
 		{
-			if (m_lGold) // ╡╖└╠ └╓└╗ ЛЪ╕╕ └·└х
+			if (m_lGold) // я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 				GetOwner()->Save();
 
 			if (GetCompany()->Done())
 			{
-				if (GetCompany()->m_lGold) // ╡╖└╠ └╓└╗ ╢з╕╕ └·└х
+				if (GetCompany()->m_lGold) // я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 					victim->Save();
 
 				// INTERNATIONAL_VERSION
-				GetOwner()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("%s ┤╘░·└╟ ▒│╚п└╠ ╝║╗ч ╡╟╛·╜└┤╧┤┘."), victim->GetName());
-				victim->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("%s ┤╘░·└╟ ▒│╚п└╠ ╝║╗ч ╡╟╛·╜└┤╧┤┘."), GetOwner()->GetName());
+				GetOwner()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("%s я┐╜╘░я┐╜я┐╜я┐╜ я┐╜я┐╜╚пя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜╟╛я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."), victim->GetName());
+				victim->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("%s я┐╜╘░я┐╜я┐╜я┐╜ я┐╜я┐╜╚пя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜╟╛я┐╜я┐╜я┐╜я┐╜╧┤я┐╜."), GetOwner()->GetName());
 				// END_OF_INTERNATIONAL_VERSION
 			}
 		}
@@ -578,14 +594,14 @@ EXCHANGE_END:
 	}
 	else
 	{
-		// ╛╞┤╧╕щ accept┐б ┤ы╟╤ ╞╨┼╢└╗ ║╕│╗└┌.
+		// я┐╜╞┤╧╕я┐╜ acceptя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜┼╢я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜.
 		exchange_packet(GetOwner(), EXCHANGE_SUBHEADER_GC_ACCEPT, true, m_bAccept, NPOS, 0);
 		exchange_packet(GetCompany()->GetOwner(), EXCHANGE_SUBHEADER_GC_ACCEPT, false, m_bAccept, NPOS, 0);
 		return true;
 	}
 }
 
-// ▒│╚п ├ы╝╥
+// я┐╜я┐╜╚п я┐╜я┐╜я┐╜
 void CExchange::Cancel()
 {
 	exchange_packet(GetOwner(), EXCHANGE_SUBHEADER_GC_END, 0, 0, NPOS, 0);
